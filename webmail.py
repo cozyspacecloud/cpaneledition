@@ -4,8 +4,12 @@ import json
 import logging
 from collections import defaultdict
 from urllib.parse import urlparse
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
+try:
+    from tkinter import Tk
+    from tkinter.filedialog import askopenfilename
+except ImportError:
+    # Tkinter is not available on headless servers (like Render)
+    pass
 from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeoutError
 import traceback
 
