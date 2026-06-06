@@ -86,6 +86,8 @@ async def run_processing(emails: List[str]):
 @app.post("/start")
 async def start_processing(background_tasks: BackgroundTasks, file: UploadFile = File(...)):
     global processing_stats
+    if processing_stats["status"] == "processing":
+        return {"message": "Already processing", "count": processing_stats["total"]}
     content = await file.read()
     emails = [line.decode("utf-8").strip() for line in content.splitlines() if line.strip()]
     
