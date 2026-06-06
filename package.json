@@ -1,0 +1,11 @@
+{
+    "name": "webmail-sorter-root",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "npx -y concurrently \"python api.py\" \"npm run dev --prefix dashboard -- -p 3000\"",
+        "build": "npm run build --prefix dashboard",
+        "start": "npm run start --prefix dashboard -- -p 3000",
+        "install-all": "npm install --prefix dashboard"
+    }
+}
